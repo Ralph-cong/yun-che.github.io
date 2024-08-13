@@ -13,22 +13,25 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/08/13/my-new-post/"/>
+    <link rel="canonical" href="http://example.com/2024/08/13/disk/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="记录生活与学习笔记">
+        <meta name="description" content="​	         本文参考了【硬核科普】硬盘的SATA M.2 NGFF NVME是什么意思，详解硬盘的总线协议与接口 ，仅作学习分享，如有侵权立删。    	    作为存储数据的硬件设备，硬盘的性能优劣直接影响了数据处理的效率。除了磁盘转速&#x2F;存储颗粒等自身的影响，协议、连接的总线类型以及外部接口也通常是我们选购一块性能合适的硬盘的重要度量因素。这三个概念很容易让电脑小白晕乎乎的混">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Test Post">
-<meta property="og:url" content="http://example.com/2024/08/13/My-New-Post/index.html">
+<meta property="og:title" content="【硬件指南】 硬盘：协议、总线、接口">
+<meta property="og:url" content="http://example.com/2024/08/13/disk/index.html">
 <meta property="og:site_name" content="辰山的blog">
-<meta property="og:description" content="记录生活与学习笔记">
+<meta property="og:description" content="​	         本文参考了【硬核科普】硬盘的SATA M.2 NGFF NVME是什么意思，详解硬盘的总线协议与接口 ，仅作学习分享，如有侵权立删。    	    作为存储数据的硬件设备，硬盘的性能优劣直接影响了数据处理的效率。除了磁盘转速&#x2F;存储颗粒等自身的影响，协议、连接的总线类型以及外部接口也通常是我们选购一块性能合适的硬盘的重要度量因素。这三个概念很容易让电脑小白晕乎乎的混">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-08-13T07:04:24.000Z">
-<meta property="article:modified_time" content="2024-08-13T07:36:19.639Z">
+<meta property="og:image" content="http://example.com/images/%E7%A1%AC%E4%BB%B6%E6%8C%87%E5%8D%97/Snipaste_2024-08-13_22-44-51.png">
+<meta property="og:image" content="http://example.com/images/%E7%A1%AC%E4%BB%B6%E6%8C%87%E5%8D%97/Snipaste_2024-08-13_23-03-35.png">
+<meta property="article:published_time" content="2024-08-13T04:14:59.914Z">
+<meta property="article:modified_time" content="2024-08-13T15:16:21.367Z">
 <meta property="article:author" content="chenshan">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/%E7%A1%AC%E4%BB%B6%E6%8C%87%E5%8D%97/Snipaste_2024-08-13_22-44-51.png">
     
     
     <!--- Icon Part-->
@@ -40,7 +43,7 @@
     
     <title>
         
-            Test Post -
+            【硬件指南】 硬盘：协议、总线、接口 -
         
         Chenshan&#39;s Blog
     </title>
@@ -86,7 +89,7 @@
 
     <script id="hexo-configurations">
     window.config = {"hostname":"example.com","root":"/","language":"zh-CN"};
-    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":true,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Welcome to my blog","subtitle":{"text":["十年磨一剑，霜刃未曾试。"],"hitokoto":{"enable":true,"api":"https://v1.hitokoto.cn?c=d&c=k"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":true,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"social_links":{"enable":false,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.4","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/8/17 11:45:14"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":true,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Welcome to my blog","subtitle":{"text":["十年磨一剑，霜刃未曾试。"],"hitokoto":{"enable":true,"api":"https://v1.hitokoto.cn?c=d&c=k"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":true,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"social_links":{"enable":false,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.4","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2024/8/13 15:30:00"};
     window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
     window.data = {"masonry":false};
   </script>
@@ -364,7 +367,7 @@
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -390,7 +393,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Test Post</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">【硬件指南】 硬盘：协议、总线、接口</h1>
                 </div>
             
             </div>
@@ -411,15 +414,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-08-13 15:04:24</span>
-        <span class="mobile">2024-08-13 15:04:24</span>
+        <span class="desktop">2024-08-13 12:14:59</span>
+        <span class="mobile">2024-08-13 12:14:59</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-08-13 15:36:19</span>
-            <span class="mobile">2024-08-13 15:36:19</span>
+            <span class="desktop">2024-08-13 23:16:21</span>
+            <span class="mobile">2024-08-13 23:16:21</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -446,25 +449,53 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            
+            <p>​	</p>
+
+  <div class="note p-4 mb-4 rounded-small primary">
+    <p>本文参考了<a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Qv411t7ZL/?share_source=copy_web&vd_source=00716f2a2210da509f138536b783795c" >【硬核科普】硬盘的SATA M.2 NGFF NVME是什么意思，详解硬盘的总线协议与接口 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，仅作学习分享，如有侵权立删。</p>
+
+  </div>	
+
+
+
+<p>作为存储数据的硬件设备，硬盘的性能优劣直接影响了数据处理的效率。除了磁盘转速&#x2F;存储颗粒等自身的影响，协议、连接的总线类型以及外部接口也通常是我们选购一块性能合适的硬盘的重要度量因素。这三个概念很容易让电脑小白晕乎乎的混淆，因此有必要作一个简要的科普指南。</p>
+<div class="tabs" id="tab-first-unique-name"><ul class="nav-tabs"><li class="tab active"><a class="#first-unique-name-1">总线</a></li><li class="tab"><a class="#first-unique-name-2">协议</a></li></ul><div class="tab-content"><div class="tab-pane active" id="first-unique-name-1"><p>总线（Bus）是连接计算机各个部件，包括处理器、内存和外部设备如硬盘等，以便数据传输的通道。例如CPU和内存、CPU和硬盘间需要进行数据交互，这时就需要通过总线连接作为传输媒介。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/%E7%A1%AC%E4%BB%B6%E6%8C%87%E5%8D%97/Snipaste_2024-08-13_22-44-51.png"
+                     
+                ></p></div><div class="tab-pane" id="first-unique-name-2"><p>协议（protocal）定义了硬盘与计算机其他部分之间的通信方式。这些协议不仅规定了如何发送和接收数据，还决定了数据的处理方式、错误检查和系统与驱动器之间的互操作性，不同的硬盘协议支持不同的数据传输速度和功能。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/%E7%A1%AC%E4%BB%B6%E6%8C%87%E5%8D%97/Snipaste_2024-08-13_23-03-35.png"
+                     
+                ></p></div></div></div>
+
+
+
+
+
+
         </div>
 
         
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> Test Post</li>
+        <li><strong>标题:</strong> 【硬件指南】 硬盘：协议、总线、接口</li>
         <li><strong>作者:</strong> chenshan</li>
         <li><strong>创建于
-                :</strong> 2024-08-13 15:04:24</li>
+                :</strong> 2024-08-13 12:14:59</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-08-13 15:36:19
+                    :</strong> 2024-08-13 23:16:21
             </li>
         
         <li>
-            <strong>链接:</strong> https://yun-che.github.io/2024/08/13/My-New-Post/
+            <strong>链接:</strong> https://yun-che.github.io/2024/08/13/disk/
         </li>
         <li>
             <strong>
@@ -486,26 +517,6 @@
 
         
 
-        
-            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
-                
-                
-                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="next"
-                        rel="next"
-                        href="/2024/08/13/hello-world/"
-                        >
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">Hello World</span>
-                                <span class="post-nav-item">下一篇</span>
-                            </span>
-                            <span class="right arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </span>
-                        </a>
-                    </div>
-                
-            </div>
         
 
 
@@ -560,7 +571,7 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
-        <div class="page-title">Test Post</div>
+        <div class="page-title">【硬件指南】 硬盘：协议、总线、接口</div>
         
 
     </div>
@@ -586,7 +597,7 @@
         <div class="text-center">
             &copy;
             
-              <span>2022</span>
+              <span>2024</span>
               -
             
             2024&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">chenshan</a>
@@ -594,7 +605,7 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共 2 篇文章
+                        共 1 篇文章
                     </span>
                     
                 </p>
