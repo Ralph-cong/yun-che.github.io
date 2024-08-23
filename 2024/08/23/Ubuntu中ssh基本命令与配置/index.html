@@ -13,25 +13,22 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/08/13/disk/"/>
+    <link rel="canonical" href="http://example.com/2024/08/23/ubuntu中ssh基本命令与配置/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="​	         本文参考了【硬核科普】硬盘的SATA M.2 NGFF NVME是什么意思，详解硬盘的总线协议与接口 ，仅作学习分享，如有侵权立删。    	    作为存储数据的硬件设备，硬盘的性能优劣直接影响了数据处理的效率。除了磁盘转速&#x2F;存储颗粒等自身的影响，协议、连接的总线类型以及外部接口也通常是我们选购一块性能合适的硬盘的重要度量因素。这三个概念很容易让电脑小白晕乎乎的混">
+        <meta name="description" content="一文带你快速上手ssh">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【硬件指南】 硬盘：协议、总线、接口">
-<meta property="og:url" content="http://example.com/2024/08/13/disk/index.html">
+<meta property="og:title" content="Ubuntu的ssh基本命令与配置">
+<meta property="og:url" content="http://example.com/2024/08/23/Ubuntu%E4%B8%ADssh%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E4%B8%8E%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="辰山的blog">
-<meta property="og:description" content="​	         本文参考了【硬核科普】硬盘的SATA M.2 NGFF NVME是什么意思，详解硬盘的总线协议与接口 ，仅作学习分享，如有侵权立删。    	    作为存储数据的硬件设备，硬盘的性能优劣直接影响了数据处理的效率。除了磁盘转速&#x2F;存储颗粒等自身的影响，协议、连接的总线类型以及外部接口也通常是我们选购一块性能合适的硬盘的重要度量因素。这三个概念很容易让电脑小白晕乎乎的混">
+<meta property="og:description" content="一文带你快速上手ssh">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/%E7%A1%AC%E4%BB%B6%E6%8C%87%E5%8D%97/Snipaste_2024-08-13_22-44-51.png">
-<meta property="og:image" content="http://example.com/images/%E7%A1%AC%E4%BB%B6%E6%8C%87%E5%8D%97/Snipaste_2024-08-13_23-03-35.png">
-<meta property="article:published_time" content="2024-08-13T04:14:59.914Z">
-<meta property="article:modified_time" content="2024-08-16T04:51:26.137Z">
+<meta property="article:published_time" content="2024-08-23T11:06:32.000Z">
+<meta property="article:modified_time" content="2024-08-23T12:24:17.761Z">
 <meta property="article:author" content="chenshan">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/%E7%A1%AC%E4%BB%B6%E6%8C%87%E5%8D%97/Snipaste_2024-08-13_22-44-51.png">
     
     
     <!--- Icon Part-->
@@ -43,7 +40,7 @@
     
     <title>
         
-            【硬件指南】 硬盘：协议、总线、接口 -
+            Ubuntu的ssh基本命令与配置 -
         
         Chenshan&#39;s Blog
     </title>
@@ -393,7 +390,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">【硬件指南】 硬盘：协议、总线、接口</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Ubuntu的ssh基本命令与配置</h1>
                 </div>
             
             </div>
@@ -414,15 +411,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-08-13 12:14:59</span>
-        <span class="mobile">2024-08-13 12:14:59</span>
+        <span class="desktop">2024-08-23 19:06:32</span>
+        <span class="mobile">2024-08-23 19:06:32</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-08-16 12:51:26</span>
-            <span class="mobile">2024-08-16 12:51:26</span>
+            <span class="desktop">2024-08-23 20:24:17</span>
+            <span class="mobile">2024-08-23 20:24:17</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -449,33 +446,82 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <p>​	</p>
+            <h2 id="SSH简介"><a href="#SSH简介" class="headerlink" title="SSH简介"></a>SSH简介</h2><p>Secure Shell(SSH) 是由 IETF(The Internet Engineering Task Force) 制定的建立在应用层基础上的安全网络协议。它在本地和远程计算机之间提供安全、加密的通信通道，使其成为远程管理、文件传输和隧道的绝佳工具。</p>
+<p>SSH之所以能够保证安全，原因在于它采用了非对称加密技术(RSA)加密了所有传输的数据。它提供了两种级别的登录方式。</p>
+<ul>
+<li><p>第一种级别（基于口令的安全验证）：只要你知道自己帐号和密码，就可以登录到远程主机。</p>
+</li>
+<li><p>第二种级别（基于密钥的安全验证）：你必须为自己创建一对密钥，并把公钥放在需要访问的服务器上。如果你要连接到SSH服务器上，客户端软件就会向服务器发出请求，请求用你的密钥进行安全验证。服务器收到请求之后，先在该服务器上你的主目录下寻找你的公钥，然后把它和你发送过来的公钥进行比较。如果两个密钥一致，服务器就用公钥加密“质询”(challenge)并把它发送给客户端软件。客户端软件收到“质询”之后就可以用你的私钥在本地解密再把它发送给服务器完成登录。与第一种级别相比，第二种级别不仅加密所有传输的数据，也不需要在网络上传送口令，因此安全性更高，可以有效防止中间人攻击。</p>
+</li>
+</ul>
+<h2 id="安装SSH服务器"><a href="#安装SSH服务器" class="headerlink" title="安装SSH服务器"></a>安装SSH服务器</h2><p>SSH分为客户端 openssh-client 和服务器 openssh-server, 如果只是想远程登陆别的机器只需要安装客户端（Ubuntu默认安装了客户端），如果要开放本机的SSH服务就需要安装服务器。安装步骤如下：</p>
+<ol>
+<li>更新软件包列表</li>
+</ol>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure></div>
+
+<ol start="2">
+<li>安装ssh服务器：</li>
+</ol>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openssh-server</span><br></pre></td></tr></table></figure></div>
+
+<ol start="3">
+<li>安装完成后，SSH服务器将自动启动。您可以使用以下命令检查其状态：</li>
+</ol>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service ssh status</span><br></pre></td></tr></table></figure></div>
+<p>​      如果服务器状态为”active”，则表示SSH服务器已成功安装并正在运行。</p>
+<h2 id="连接到远程主机"><a href="#连接到远程主机" class="headerlink" title="连接到远程主机"></a>连接到远程主机</h2><h3 id="第一种登录方式：密码登录"><a href="#第一种登录方式：密码登录" class="headerlink" title="第一种登录方式：密码登录"></a>第一种登录方式：密码登录</h3><ol>
+<li><p>输入远程服务器的IP地址和端口号（可选），默认使用22端口。如果需要调用图形界面程序可以使用 -X 选项。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh username@your_server_ip_address (-p port_number)</span><br></pre></td></tr></table></figure></div></li>
+</ol>
+<p>​      例如，要以用户 john 的身份连接到 IP 地址为 192.168.100.26 的远程主机，您可以使用以下命令</p>
+   <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh john@192.168.100.26</span><br></pre></td></tr></table></figure></div>
+
 
   <div class="note p-4 mb-4 rounded-small primary">
-    <p>本文参考了<a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Qv411t7ZL/?share_source=copy_web&vd_source=00716f2a2210da509f138536b783795c" >【硬核科普】硬盘的SATA M.2 NGFF NVME是什么意思，详解硬盘的总线协议与接口 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，仅作学习分享，如有侵权立删。</p>
+    <p>远程主机的ip地址可以通过<code>ifconfig</code>命令查询</p>
 
-  </div>	
+  </div>
 
+<ol start="2">
+<li>输入密码进行身份验证</li>
+</ol>
 
+  <div class="note p-4 mb-4 rounded-small info">
+    <p>如果有频繁登录某一远程主机的需求，每次敲击这么一长串命令实在繁琐，可以给命令写个别名</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo echo &quot;alias yourname=&#x27;ssh username@your_server_ip_address&#x27;&quot; &gt;&gt; ~/.bashrc &amp;&amp; source ~/.bashrc</span><br></pre></td></tr></table></figure></div>
 
-<p>作为存储数据的硬件设备，硬盘的性能优劣直接影响了数据处理的效率。除了磁盘转速&#x2F;存储颗粒等自身的影响，协议、连接的总线类型以及外部接口也通常是我们选购一块性能合适的硬盘的重要度量因素。这三个概念很容易让电脑小白晕乎乎的混淆，因此有必要作一个简要的科普指南。</p>
-<div class="tabs" id="tab-first-unique-name"><ul class="nav-tabs"><li class="tab active"><a class="#first-unique-name-1">总线</a></li><li class="tab"><a class="#first-unique-name-2">协议</a></li></ul><div class="tab-content"><div class="tab-pane active" id="first-unique-name-1"><p>总线（Bus）是连接计算机各个部件，包括处理器、内存和外部设备如硬盘等，以便数据传输的通道。例如CPU和内存、CPU和硬盘间需要进行数据交互，这时就需要通过总线连接作为传输媒介。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/%E7%A1%AC%E4%BB%B6%E6%8C%87%E5%8D%97/Snipaste_2024-08-13_22-44-51.png"
-                     
-                ></p></div><div class="tab-pane" id="first-unique-name-2"><p>协议（protocal）定义了硬盘与计算机其他部分之间的通信方式。这些协议不仅规定了如何发送和接收数据，还决定了数据的处理方式、错误检查和系统与驱动器之间的互操作性，不同的硬盘协议支持不同的数据传输速度和功能。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/%E7%A1%AC%E4%BB%B6%E6%8C%87%E5%8D%97/Snipaste_2024-08-13_23-03-35.png"
-                     
-                ></p></div></div></div>
+<p>这样下次就只需要输入yourname(可自定义)就可以了</p>
 
+  </div>
 
+<h3 id="第二种登录方式：公私钥登录"><a href="#第二种登录方式：公私钥登录" class="headerlink" title="第二种登录方式：公私钥登录"></a>第二种登录方式：公私钥登录</h3><ol>
+<li><p>在本地机器上生成公钥私钥对</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>将公钥复制到远程机器中,将key写到远程机器的 ~&#x2F; .ssh&#x2F;authorized_keys文件中</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id username@your_server_ip_address</span><br></pre></td></tr></table></figure></div></li>
+</ol>
+<p>​      输入密码后，后续使用<code>ssh username@your_server_ip_address</code>即可登录，无需输入密码。同样如果觉得天天输这个命令麻烦的话可以写个别名。</p>
+<h2 id="高级应用"><a href="#高级应用" class="headerlink" title="高级应用"></a>高级应用</h2><h3 id="无中断运行程序"><a href="#无中断运行程序" class="headerlink" title="无中断运行程序"></a>无中断运行程序</h3><p>Linux关闭ssh（关闭终端等）后运行的程序或者服务会自动停止，如果需要在关闭终端后依旧执行，可以使用<code>nohup</code>指令</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup python3 a.python</span><br></pre></td></tr></table></figure></div>
 
+<h3 id="跨机拷贝文件"><a href="#跨机拷贝文件" class="headerlink" title="跨机拷贝文件"></a>跨机拷贝文件</h3><p>使用<code>scp</code>命令可以在各个主机之间进行复制或者文件传输。scp是secure copy的简写，它在后台使用ssh连接来进行文件的传输。</p>
+<ul>
+<li><p>scp的基础语法如下</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp source_file_path destination_file_path</span><br></pre></td></tr></table></figure></div>
 
+</li>
+<li><p>从本地传到远程主机（从远程传到本地只需倒过来即可）</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ~/my_local_file user@your_server_ip_address:/remote/directory</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+
+  <div class="note p-4 mb-4 rounded-small default">
+    <p>参考：</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://cn.linux-console.net/?p=23347" >Linux 中的基本 SSH 命令用法和配置 (linux-console.net) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/voidy/p/4215891.html" >12个scp传输文件的命令栗子 - 尛鱼 - 博客园 (cnblogs.com) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+
+  </div>
 
 
         </div>
@@ -484,18 +530,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> 【硬件指南】 硬盘：协议、总线、接口</li>
+        <li><strong>标题:</strong> Ubuntu的ssh基本命令与配置</li>
         <li><strong>作者:</strong> chenshan</li>
         <li><strong>创建于
-                :</strong> 2024-08-13 12:14:59</li>
+                :</strong> 2024-08-23 19:06:32</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-08-16 12:51:26
+                    :</strong> 2024-08-23 20:24:17
             </li>
         
         <li>
-            <strong>链接:</strong> https://yun-che.github.io/2024/08/13/disk/
+            <strong>链接:</strong> https://yun-che.github.io/2024/08/23/Ubuntu中ssh基本命令与配置/
         </li>
         <li>
             <strong>
@@ -520,21 +566,21 @@
         
             <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
                 
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2024/08/23/Ubuntu%E4%B8%ADssh%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E4%B8%8E%E9%85%8D%E7%BD%AE/"
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/08/13/disk/"
                         >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">Ubuntu的ssh基本命令与配置</span>
-                                <span class="post-nav-item">上一篇</span>
+                                <span class="post-nav-title-item">【硬件指南】 硬盘：协议、总线、接口</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
                             </span>
                         </a>
                     </div>
-                
                 
             </div>
         
@@ -591,8 +637,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
-        <div class="page-title">【硬件指南】 硬盘：协议、总线、接口</div>
-        
+        <div class="page-title">Ubuntu的ssh基本命令与配置</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH%E7%AE%80%E4%BB%8B"><span class="nav-text">SSH简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85SSH%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-text">安装SSH服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%B8%BB%E6%9C%BA"><span class="nav-text">连接到远程主机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8D%E7%99%BB%E5%BD%95%E6%96%B9%E5%BC%8F%EF%BC%9A%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95"><span class="nav-text">第一种登录方式：密码登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D%E7%99%BB%E5%BD%95%E6%96%B9%E5%BC%8F%EF%BC%9A%E5%85%AC%E7%A7%81%E9%92%A5%E7%99%BB%E5%BD%95"><span class="nav-text">第二种登录方式：公私钥登录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8"><span class="nav-text">高级应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E4%B8%AD%E6%96%AD%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F"><span class="nav-text">无中断运行程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%A8%E6%9C%BA%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6"><span class="nav-text">跨机拷贝文件</span></a></li></ol></li></ol>
 
     </div>
 </div>
