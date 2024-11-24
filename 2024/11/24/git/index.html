@@ -13,20 +13,20 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/08/23/ubuntu中ssh基本命令与配置/"/>
+    <link rel="canonical" href="http://example.com/2024/11/24/git/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="一文带你快速上手ssh">
+        <meta name="description" content="Git clone1. 克隆行为1git clone git@github.com:username&#x2F;repository.git   git clone 默认行为： Git 会从远程仓库克隆所有分支的完整历史记录。 但是，克隆完成后，你的本地仓库只会创建远程仓库默认分支对应的本地分支（通常是 main），且该本地分支自动与远程仓库中的分支相关联。 其他分支的记录存在于你的本地仓库中，但不会自动创">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu的ssh基本命令与配置">
-<meta property="og:url" content="http://example.com/2024/08/23/Ubuntu%E4%B8%ADssh%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E4%B8%8E%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:title" content="Git与GitHub指南">
+<meta property="og:url" content="http://example.com/2024/11/24/git/index.html">
 <meta property="og:site_name" content="辰山的blog">
-<meta property="og:description" content="一文带你快速上手ssh">
+<meta property="og:description" content="Git clone1. 克隆行为1git clone git@github.com:username&#x2F;repository.git   git clone 默认行为： Git 会从远程仓库克隆所有分支的完整历史记录。 但是，克隆完成后，你的本地仓库只会创建远程仓库默认分支对应的本地分支（通常是 main），且该本地分支自动与远程仓库中的分支相关联。 其他分支的记录存在于你的本地仓库中，但不会自动创">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-08-23T11:06:32.000Z">
-<meta property="article:modified_time" content="2024-09-10T04:12:29.887Z">
+<meta property="article:published_time" content="2024-11-24T09:04:59.000Z">
+<meta property="article:modified_time" content="2024-11-24T09:04:59.764Z">
 <meta property="article:author" content="chenshan">
 <meta name="twitter:card" content="summary">
     
@@ -40,7 +40,7 @@
     
     <title>
         
-            Ubuntu的ssh基本命令与配置 -
+            Git与GitHub指南 -
         
         Chenshan&#39;s Blog
     </title>
@@ -390,7 +390,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Ubuntu的ssh基本命令与配置</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Git与GitHub指南</h1>
                 </div>
             
             </div>
@@ -411,15 +411,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-08-23 19:06:32</span>
-        <span class="mobile">2024-08-23 19:06:32</span>
+        <span class="desktop">2024-11-24 17:04:59</span>
+        <span class="mobile">2024-11-24 17:04:59</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-09-10 12:12:29</span>
-            <span class="mobile">2024-09-10 12:12:29</span>
+            <span class="desktop">2024-11-24 17:04:59</span>
+            <span class="mobile">2024-11-24 17:04:59</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -446,87 +446,204 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h2 id="SSH简介"><a href="#SSH简介" class="headerlink" title="SSH简介"></a>SSH简介</h2><p>Secure Shell(SSH) 是由 IETF(The Internet Engineering Task Force) 制定的建立在应用层基础上的安全网络协议。它在本地和远程计算机之间提供安全、加密的通信通道，使其成为远程管理、文件传输和隧道的绝佳工具。</p>
-<p>SSH之所以能够保证安全，原因在于它采用了非对称加密技术(RSA)加密了所有传输的数据。它提供了两种级别的登录方式。</p>
+            <h2 id="Git-clone"><a href="#Git-clone" class="headerlink" title="Git clone"></a>Git clone</h2><h4 id="1-克隆行为"><a href="#1-克隆行为" class="headerlink" title="1. 克隆行为"></a>1. <strong>克隆行为</strong></h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:username/repository.git</span><br></pre></td></tr></table></figure></div>
+
 <ul>
-<li><p>第一种级别（基于口令的安全验证）：只要你知道自己帐号和密码，就可以登录到远程主机。</p>
-</li>
-<li><p>第二种级别（基于密钥的安全验证）：你必须为自己创建一对密钥，并把公钥放在需要访问的服务器上。如果你要连接到SSH服务器上，客户端软件就会向服务器发出请求，请求用你的密钥进行安全验证。服务器收到请求之后，先在该服务器上你的主目录下寻找你的公钥，然后把它和你发送过来的公钥进行比较。如果两个密钥一致，服务器就用公钥加密“质询”(challenge)并把它发送给客户端软件。客户端软件收到“质询”之后就可以用你的私钥在本地解密再把它发送给服务器完成登录。与第一种级别相比，第二种级别不仅加密所有传输的数据，也不需要在网络上传送口令，因此安全性更高，可以有效防止中间人攻击。</p>
+<li><code>git clone</code> 默认行为：<ul>
+<li>Git 会从远程仓库克隆所有分支的完整历史记录。</li>
+<li>但是，克隆完成后，你的本地仓库只会<strong>创建远程仓库默认分支对应的本地分支</strong>（通常是 <code>main</code>），且该本地分支自动与远程仓库中的分支相关联。</li>
+<li>其他分支的记录存在于你的本地仓库中，但不会自动创建对应的本地分支。</li>
+</ul>
 </li>
 </ul>
-<h2 id="安装SSH服务器"><a href="#安装SSH服务器" class="headerlink" title="安装SSH服务器"></a>安装SSH服务器</h2><p>SSH分为客户端 openssh-client 和服务器 openssh-server, 如果只是想远程登陆别的机器只需要安装客户端（Ubuntu默认安装了客户端），如果要开放本机的SSH服务就需要安装服务器。安装步骤如下：</p>
-<ol>
-<li><p>更新软件包列表</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure></div>
+<h4 id="2-查看克隆下来的分支"><a href="#2-查看克隆下来的分支" class="headerlink" title="2. 查看克隆下来的分支"></a>2. <strong>查看克隆下来的分支</strong></h4><p>在克隆完成后，你可以运行以下命令查看远程分支：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r</span><br></pre></td></tr></table></figure></div>
+
+<p>输出示例：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">origin/main</span><br><span class="line">origin/develop</span><br></pre></td></tr></table></figure></div>
+
+<p>这表示所有远程分支都被克隆到本地，但尚未创建相应的本地分支。</p>
+<h2 id="Remote-Repository"><a href="#Remote-Repository" class="headerlink" title="Remote Repository"></a>Remote Repository</h2><h4 id="1-远程仓库名称"><a href="#1-远程仓库名称" class="headerlink" title="1. 远程仓库名称"></a>1. <strong>远程仓库名称</strong></h4><ul>
+<li><p>当克隆一个仓库时，Git 自动为远程仓库分配一个默认名称，通常是 <code>origin</code>。</p>
 </li>
-<li><p>安装ssh服务器：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openssh-server</span><br></pre></td></tr></table></figure></div>
+<li><p>一个本地仓库可以有多个远程仓库，可以通过以下命令查看所有远程仓库的名称和地址：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure></div>
+
+<p>输出示例：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">origin  https://github.com/username/repository.git (fetch)</span><br><span class="line">origin  https://github.com/username/repository.git (push)</span><br></pre></td></tr></table></figure></div>
 </li>
-<li><p>安装完成后，SSH服务器将自动启动。您可以使用以下命令检查其状态，如果服务器状态为”active”，则表示SSH服务器已成功安装并正在运行。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service ssh status</span><br></pre></td></tr></table></figure></div></li>
-</ol>
-<h2 id="连接到远程主机"><a href="#连接到远程主机" class="headerlink" title="连接到远程主机"></a>连接到远程主机</h2><h3 id="第一种登录方式：密码登录"><a href="#第一种登录方式：密码登录" class="headerlink" title="第一种登录方式：密码登录"></a>第一种登录方式：密码登录</h3><ol>
-<li><p>输入远程服务器的IP地址和端口号（可选），默认使用22端口。如果需要调用图形界面程序可以使用 -X 选项。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh username@your_server_ip_address (-p port_number)</span><br></pre></td></tr></table></figure></div>
-
-<p>例如，要以用户 john 的身份连接到 IP 地址为 192.168.100.26 的远程主机，您可以使用以下命令</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh john@192.168.100.26</span><br></pre></td></tr></table></figure></div></li>
-</ol>
-
-  <div class="note p-4 mb-4 rounded-small primary">
-    <p>远程主机的ip地址可以通过<code>ifconfig</code>命令查询</p>
-
-  </div>
-
-<ol start="2">
-<li>输入密码进行身份验证</li>
-</ol>
-
-  <div class="note p-4 mb-4 rounded-small info">
-    <p>如果有频繁登录某一远程主机的需求，每次敲击这么一长串命令实在繁琐，可以给命令写个别名</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo echo &quot;alias yourname=&#x27;ssh username@your_server_ip_address&#x27;&quot; &gt;&gt; ~/.bashrc &amp;&amp; source ~/.bashrc</span><br></pre></td></tr></table></figure></div>
-
-<p>这样下次就只需要输入yourname(可自定义)就可以了</p>
-
-  </div>
-
-<h3 id="第二种登录方式：公私钥登录"><a href="#第二种登录方式：公私钥登录" class="headerlink" title="第二种登录方式：公私钥登录"></a>第二种登录方式：公私钥登录</h3><ol>
-<li><p>在本地机器上生成公钥私钥对</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>将公钥复制到远程机器中,将key写到远程机器的 ~&#x2F; .ssh&#x2F;authorized_keys文件中</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id username@your_server_ip_address</span><br></pre></td></tr></table></figure></div></li>
-</ol>
-<p>​      输入密码后，后续使用<code>ssh username@your_server_ip_address</code>即可登录，无需输入密码。同样如果觉得天天输这个命令麻烦的话可以写个别名。</p>
-<h2 id="进阶应用"><a href="#进阶应用" class="headerlink" title="进阶应用"></a>进阶应用</h2><h3 id="无中断运行程序"><a href="#无中断运行程序" class="headerlink" title="无中断运行程序"></a>无中断运行程序</h3><p>Linux关闭ssh（关闭终端等）后运行的程序或者服务会自动停止，如果需要在关闭终端后依旧执行，可以使用<code>nohup</code>指令</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup python3 a.python</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="跨机拷贝文件"><a href="#跨机拷贝文件" class="headerlink" title="跨机拷贝文件"></a>跨机拷贝文件</h3><p>使用<code>scp</code>命令可以在各个主机之间进行复制或者文件传输。scp是secure copy的简写，它在后台使用ssh连接来进行文件的传输。</p>
-<ul>
-<li><p>scp的基础语法如下</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp source_file_path destination_file_path</span><br></pre></td></tr></table></figure></div>
-
-</li>
-<li><p>从本地传到远程主机（从远程传到本地只需倒过来即可）</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ~/my_local_file user@your_server_ip_address:/remote/directory</span><br></pre></td></tr></table></figure></div></li>
+<li><p>添加&#x2F;删除远程仓库</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//添加</span><br><span class="line">git remote add &lt;remote-name&gt; &lt;repository-url&gt;</span><br><span class="line">git remote add another-repo https://github.com/another-user/another-repo.git</span><br><span class="line">//删除</span><br><span class="line">git remote remove &lt;remote-name&gt;</span><br></pre></td></tr></table></figure></div></li>
 </ul>
-<p></p>
+<h4 id="2-远程分支"><a href="#2-远程分支" class="headerlink" title="2. 远程分支"></a>2. <strong>远程分支</strong></h4><ul>
+<li><p>远程仓库的分支会以 <code>remote-name/branch-name</code>的形式存储在本地，比如：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">origin/main</span><br><span class="line">origin/feature-branch</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>这些远程分支是只读的，表示远程仓库中对应分支的最新状态。</p>
+</li>
+</ul>
+<h4 id="3-上游分支（Upstream-Branch）"><a href="#3-上游分支（Upstream-Branch）" class="headerlink" title="3. 上游分支（Upstream Branch）"></a>3. <strong>上游分支（Upstream Branch）</strong></h4><ul>
+<li><p>当你在本地创建一个分支并与远程分支关联时，本地分支会设置一个<strong>上游分支</strong>。</p>
+</li>
+<li><p>可以用以下命令查看当前分支是否有上游分支：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -vv</span><br></pre></td></tr></table></figure></div>
 
-<p></p>
+<p>输出示例：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">new-branch  123abc [origin/new-branch]  Commit message</span><br><span class="line">main        456def [origin/main]            Commit message</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>可以手动设置关联：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream-to=origin/newbranch newbranch</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h3 id="本地分支-vs-远程引用"><a href="#本地分支-vs-远程引用" class="headerlink" title="本地分支 vs 远程引用"></a><strong>本地分支 vs 远程引用</strong></h3><table>
+<thead>
+<tr>
+<th><strong>类型</strong></th>
+<th><strong>定义</strong></th>
+<th><strong>例子</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>本地分支</td>
+<td>你在本地创建的分支，可以直接进行代码更改和提交。</td>
+<td><code>main</code>、<code>feature-branch</code></td>
+</tr>
+<tr>
+<td>远程分支的引用</td>
+<td>远程仓库分支的最新快照，它们是只读的，用于了解远程仓库当前的状态。</td>
+<td><code>origin/main</code>、<code>origin/feature-branch</code></td>
+</tr>
+</tbody></table>
+<h2 id="Git-fetch"><a href="#Git-fetch" class="headerlink" title="Git fetch"></a>Git fetch</h2><h4 id="1-获取远程仓库的更新"><a href="#1-获取远程仓库的更新" class="headerlink" title="1.获取远程仓库的更新"></a>1.<strong>获取远程仓库的更新</strong></h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//默认从所有已配置的远程仓库获取更新</span><br><span class="line">git fetch</span><br><span class="line">//获取某个远程仓库的更新</span><br><span class="line">git fetch &lt;remote-name&gt;</span><br><span class="line">//只获取某个特定分支的更新</span><br><span class="line">git fetch &lt;remote-name&gt; &lt;branch-name&gt;</span><br></pre></td></tr></table></figure></div>
 
+<ul>
+<li><p>这些更新保存在本地的远程引用中（如 <code>origin/main</code> ）。</p>
+</li>
+<li><p>不会自动合并到本地分支，因此不影响你的当前工作目录。</p>
+</li>
+</ul>
+<h4 id="2-基于远程更新创建本地分支"><a href="#2-基于远程更新创建本地分支" class="headerlink" title="2.基于远程更新创建本地分支"></a>2.<strong>基于远程更新创建本地分支</strong></h4><ul>
+<li><p>假设远程有一个新分支 <code>origin/new-branch</code>，你可以通过以下命令基于远程分支创建本地分支：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin</span><br><span class="line">git checkout -b new-branch origin/new-branch</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<p>​	此时你的本地分支会与该远程分支自动创建关联</p>
+<h2 id="Git-pull"><a href="#Git-pull" class="headerlink" title="Git pull"></a>Git pull</h2><h4 id="1-从默认远程分支拉取并合并更新"><a href="#1-从默认远程分支拉取并合并更新" class="headerlink" title="1. 从默认远程分支拉取并合并更新"></a>1. <strong>从默认远程分支拉取并合并更新</strong></h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure></div>
 
-  <div class="note-large blue">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <p>参考文章</p>
+<ul>
+<li>默认从当前分支的<strong>上游分支</strong>（upstream branch）拉取并合并更新。</li>
+<li>适用于已经设置了远程分支关联的场景。</li>
+</ul>
+<h4 id="2-指定远程仓库和分支"><a href="#2-指定远程仓库和分支" class="headerlink" title="2. 指定远程仓库和分支"></a>2. <strong>指定远程仓库和分支</strong></h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull &lt;remote-name&gt; &lt;branch-name&gt;</span><br></pre></td></tr></table></figure></div>
 
-    </div>
-    <div class="notel-content">
-      <p><a class="link"   target="_blank" rel="noopener" href="https://cn.linux-console.net/?p=23347" >Linux 中的基本 SSH 命令用法和配置 (linux-console.net) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/voidy/p/4215891.html" >12个scp传输文件的命令栗子 - 尛鱼 - 博客园 (cnblogs.com) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<ul>
+<li><p>示例：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin main</span><br></pre></td></tr></table></figure></div>
 
-    </div>
-  </div>
+<ul>
+<li>从 <code>origin</code> 仓库的 <code>main</code> 分支拉取更新，并将更新合并到当前所在的本地分支(即使此时所在的本地分支不是<code>main</code>分支)。</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-只拉取更新但不合并"><a href="#3-只拉取更新但不合并" class="headerlink" title="3. 只拉取更新但不合并"></a>3. <strong>只拉取更新但不合并</strong></h4><ul>
+<li><p>如果只想获取远程仓库的最新更改，而不立即合并，可以使用 </p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch</span><br></pre></td></tr></table></figure></div>
 
+<p>然后手动合并：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge origin/main</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<hr>
+<h3 id="git-pull-与-git-fetch-的区别"><a href="#git-pull-与-git-fetch-的区别" class="headerlink" title="git pull 与 git fetch 的区别"></a><strong><code>git pull</code> 与 <code>git fetch</code> 的区别</strong></h3><table>
+<thead>
+<tr>
+<th><strong>功能</strong></th>
+<th><strong><code>git pull</code></strong></th>
+<th><strong><code>git fetch</code></strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>更新远程分支</strong></td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td><strong>更新当前分支</strong></td>
+<td>是，直接将远程更新合并到当前分支。</td>
+<td>否，仅更新远程分支的引用（如 <code>origin/main</code>），不会自动合并到本地分支。</td>
+</tr>
+<tr>
+<td><strong>冲突处理</strong></td>
+<td>如果有冲突，必须在合并时手动解决。</td>
+<td>不涉及合并，不会引发冲突。</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>- 快速同步代码。</td>
+<td>- 检查远程更新内容，合并操作由你手动控制。</td>
+</tr>
+</tbody></table>
+<h3 id="Fork"><a href="#Fork" class="headerlink" title="Fork"></a>Fork</h3><h4 id="1-什么是-Fork？"><a href="#1-什么是-Fork？" class="headerlink" title="1.什么是 Fork？"></a>1.<strong>什么是 Fork？</strong></h4><ul>
+<li><strong>Fork</strong> 是 GitHub 提供的功能，允许你将一个仓库复制一个副本到你的 GitHub 账户下。</li>
+<li>常用于开源项目的开发与维护，你可以 Fork 开源项目的仓库，在自己的副本中开发并提交改进，然后通过 <code>Pull Request</code> 将更改提回原始仓库。</li>
+<li>Fork 后的仓库是独立的，但可以通过<code>Sync fork</code>同步原始仓库的更新：<ul>
+<li>原始仓库被称为 <strong>上游仓库（upstream repository）</strong>。</li>
+<li>你创建的副本被称为 <strong>派生仓库（forked repository）</strong>。</li>
+</ul>
+</li>
+</ul>
+<h4 id="Fork-工作流示例"><a href="#Fork-工作流示例" class="headerlink" title="Fork 工作流示例"></a><strong>Fork 工作流示例</strong></h4><ol>
+<li><p><strong>Fork 开源项目：</strong></p>
+<ul>
+<li>在 GitHub 上点击仓库页面的 <code>Fork</code> 按钮。</li>
+</ul>
+</li>
+<li><p><strong>克隆 Fork 仓库到本地：</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/your-username/forked-repository.git</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><strong>配置上游仓库(可选)</strong></p>
+</li>
+</ol>
+<ul>
+<li><p>为了保持 Fork 仓库与上游仓库同步，你需要将上游仓库配置为远程仓库：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add upstream https://github.com/original-user/original-repository.git</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>查看远程仓库配置：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>输出示例：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">origin    https://github.com/your-username/forked-repository.git (fetch)</span><br><span class="line">origin    https://github.com/your-username/forked-repository.git (push)</span><br><span class="line">upstream  https://github.com/original-user/original-repository.git (fetch)</span><br><span class="line">upstream  https://github.com/original-user/original-repository.git (push)</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>定期从上游仓库同步最新更改：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git fetch upstream</span><br><span class="line">git merge upstream/main</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>或者直接拉取并合并：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull upstream main</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>如果你在本地同步了上游仓库的更改，并希望更新你的 Fork 仓库，可以使用：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin main</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<ol start="4">
+<li><strong>开发新功能：</strong></li>
+</ol>
+<ul>
+<li>创建一个分支开发新功能(Pull Request 分支)：</li>
+</ul>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b feature-branch</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>提交你的更改：</li>
+</ul>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;Add new feature&quot;</span><br></pre></td></tr></table></figure></div>
+
+<ol start="5">
+<li><strong>推送分支到 Fork 仓库：</strong></li>
+</ol>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin feature-branch</span><br></pre></td></tr></table></figure></div>
+
+<ol start="6">
+<li><strong>创建 Pull Request：</strong></li>
+</ol>
+<ul>
+<li>登录 GitHub，进入你的 Fork 仓库，选择 <code>feature-branch</code>，点击 <code>New Pull Request</code> 提交你的更改给上游仓库。</li>
+</ul>
 
         </div>
 
@@ -534,18 +651,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> Ubuntu的ssh基本命令与配置</li>
+        <li><strong>标题:</strong> Git与GitHub指南</li>
         <li><strong>作者:</strong> chenshan</li>
         <li><strong>创建于
-                :</strong> 2024-08-23 19:06:32</li>
+                :</strong> 2024-11-24 17:04:59</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-09-10 12:12:29
+                    :</strong> 2024-11-24 17:04:59
             </li>
         
         <li>
-            <strong>链接:</strong> https://yun-che.github.io/2024/08/23/Ubuntu中ssh基本命令与配置/
+            <strong>链接:</strong> https://yun-che.github.io/2024/11/24/git/
         </li>
         <li>
             <strong>
@@ -570,29 +687,14 @@
         
             <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
                 
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2024/09/21/Ubuntu20.04%E5%AE%89%E8%A3%85ros%20noetic/"
-                        >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">Ubuntu20.04安装ros noetic</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/08/13/disk/"
+                        href="/2024/09/21/Ubuntu20.04%E5%AE%89%E8%A3%85ros%20noetic/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">【硬件指南】 硬盘：协议、总线、接口</span>
+                                <span class="post-nav-title-item">Ubuntu20.04安装ros noetic</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -671,8 +773,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
-        <div class="page-title">Ubuntu的ssh基本命令与配置</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH%E7%AE%80%E4%BB%8B"><span class="nav-text">SSH简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85SSH%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-text">安装SSH服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%B8%BB%E6%9C%BA"><span class="nav-text">连接到远程主机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8D%E7%99%BB%E5%BD%95%E6%96%B9%E5%BC%8F%EF%BC%9A%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95"><span class="nav-text">第一种登录方式：密码登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D%E7%99%BB%E5%BD%95%E6%96%B9%E5%BC%8F%EF%BC%9A%E5%85%AC%E7%A7%81%E9%92%A5%E7%99%BB%E5%BD%95"><span class="nav-text">第二种登录方式：公私钥登录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6%E5%BA%94%E7%94%A8"><span class="nav-text">进阶应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E4%B8%AD%E6%96%AD%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F"><span class="nav-text">无中断运行程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%A8%E6%9C%BA%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6"><span class="nav-text">跨机拷贝文件</span></a></li></ol></li></ol>
+        <div class="page-title">Git与GitHub指南</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-clone"><span class="nav-text">Git clone</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Remote-Repository"><span class="nav-text">Remote Repository</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E5%88%86%E6%94%AF-vs-%E8%BF%9C%E7%A8%8B%E5%BC%95%E7%94%A8"><span class="nav-text">本地分支 vs 远程引用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-fetch"><span class="nav-text">Git fetch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-pull"><span class="nav-text">Git pull</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-pull-%E4%B8%8E-git-fetch-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">git pull 与 git fetch 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fork"><span class="nav-text">Fork</span></a></li></ol></li></ol>
 
     </div>
 </div>
