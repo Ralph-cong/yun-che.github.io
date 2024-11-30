@@ -13,22 +13,24 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/08/23/ubuntu中ssh基本命令与配置/"/>
+    <link rel="canonical" href="http://example.com/2024/11/30/cuda/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="一文带你快速上手ssh">
+        <meta name="description" content="主要参考了微软与NVIDIA的教程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu的ssh基本命令与配置">
-<meta property="og:url" content="http://example.com/2024/08/23/Ubuntu%E4%B8%ADssh%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E4%B8%8E%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:title" content="WSL2安装Cuda和cudnn">
+<meta property="og:url" content="http://example.com/2024/11/30/cuda/index.html">
 <meta property="og:site_name" content="辰山的blog">
-<meta property="og:description" content="一文带你快速上手ssh">
+<meta property="og:description" content="主要参考了微软与NVIDIA的教程">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-08-23T11:06:32.000Z">
-<meta property="article:modified_time" content="2024-09-10T04:12:29.887Z">
+<meta property="og:image" content="http://example.com/cuda.png">
+<meta property="article:published_time" content="2024-11-29T16:38:52.361Z">
+<meta property="article:modified_time" content="2024-11-30T10:43:53.608Z">
 <meta property="article:author" content="chenshan">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/cuda.png">
     
     
     <!--- Icon Part-->
@@ -40,7 +42,7 @@
     
     <title>
         
-            Ubuntu的ssh基本命令与配置 | Chenshan&#39;s Blog
+            WSL2安装Cuda和cudnn | Chenshan&#39;s Blog
         
     </title>
 
@@ -237,7 +239,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Ubuntu的ssh基本命令与配置</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">WSL2安装Cuda和cudnn</h1>
 			</div>
 			
 		</div>
@@ -258,15 +260,15 @@
 					<div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-08-23 19:06:32</span>
-        <span class="mobile">2024-08-23 19:06:32</span>
+        <span class="desktop">2024-11-30 00:38:52</span>
+        <span class="mobile">2024-11-30 00:38:52</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-09-10 12:12:29</span>
-            <span class="mobile">2024-09-10 12:12:29</span>
+            <span class="desktop">2024-11-30 18:43:53</span>
+            <span class="mobile">2024-11-30 18:43:53</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -293,87 +295,53 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<h2 id="SSH简介"><a href="#SSH简介" class="headerlink" title="SSH简介"></a>SSH简介</h2><p>Secure Shell(SSH) 是由 IETF(The Internet Engineering Task Force) 制定的建立在应用层基础上的安全网络协议。它在本地和远程计算机之间提供安全、加密的通信通道，使其成为远程管理、文件传输和隧道的绝佳工具。</p>
-<p>SSH之所以能够保证安全，原因在于它采用了非对称加密技术(RSA)加密了所有传输的数据。它提供了两种级别的登录方式。</p>
-<ul>
-<li><p>第一种级别（基于口令的安全验证）：只要你知道自己帐号和密码，就可以登录到远程主机。</p>
-</li>
-<li><p>第二种级别（基于密钥的安全验证）：你必须为自己创建一对密钥，并把公钥放在需要访问的服务器上。如果你要连接到SSH服务器上，客户端软件就会向服务器发出请求，请求用你的密钥进行安全验证。服务器收到请求之后，先在该服务器上你的主目录下寻找你的公钥，然后把它和你发送过来的公钥进行比较。如果两个密钥一致，服务器就用公钥加密“质询”(challenge)并把它发送给客户端软件。客户端软件收到“质询”之后就可以用你的私钥在本地解密再把它发送给服务器完成登录。与第一种级别相比，第二种级别不仅加密所有传输的数据，也不需要在网络上传送口令，因此安全性更高，可以有效防止中间人攻击。</p>
-</li>
-</ul>
-<h2 id="安装SSH服务器"><a href="#安装SSH服务器" class="headerlink" title="安装SSH服务器"></a>安装SSH服务器</h2><p>SSH分为客户端 openssh-client 和服务器 openssh-server, 如果只是想远程登陆别的机器只需要安装客户端（Ubuntu默认安装了客户端），如果要开放本机的SSH服务就需要安装服务器。安装步骤如下：</p>
+			<h2 id="CUDA-Toolkit"><a href="#CUDA-Toolkit" class="headerlink" title="CUDA Toolkit"></a>CUDA Toolkit</h2><p>这里主要参考了官方教程：<a class="link"   target="_blank" rel="noopener" href="https://docs.nvidia.com/cuda/wsl-user-guide/index.html#notices" >CUDA on WSL (nvidia.com)<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
 <ol>
-<li><p>更新软件包列表</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>安装ssh服务器：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openssh-server</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>安装完成后，SSH服务器将自动启动。您可以使用以下命令检查其状态，如果服务器状态为”active”，则表示SSH服务器已成功安装并正在运行。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service ssh status</span><br></pre></td></tr></table></figure></div></li>
+<li>由于Windows的<a class="link"   target="_blank" rel="noopener" href="https://www.nvidia.com/en-us/drivers/" >Nvidia Driver<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>提供了对WSL的支持，所以我们不需要像双系统那样重新在Ubuntu上安装Nvidia驱动，只需要安装CUDA Toolkit即可。实际上需要的CUDA版本与你的pytorch有关。</li>
 </ol>
-<h2 id="连接到远程主机"><a href="#连接到远程主机" class="headerlink" title="连接到远程主机"></a>连接到远程主机</h2><h3 id="第一种登录方式：密码登录"><a href="#第一种登录方式：密码登录" class="headerlink" title="第一种登录方式：密码登录"></a>第一种登录方式：密码登录</h3><ol>
-<li><p>输入远程服务器的IP地址和端口号（可选），默认使用22端口。如果需要调用图形界面程序可以使用 -X 选项。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh username@your_server_ip_address (-p port_number)</span><br></pre></td></tr></table></figure></div>
-
-<p>例如，要以用户 john 的身份连接到 IP 地址为 192.168.100.26 的远程主机，您可以使用以下命令</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh john@192.168.100.26</span><br></pre></td></tr></table></figure></div></li>
-</ol>
-
-  <div class="note p-4 mb-4 rounded-small primary">
-    <p>远程主机的ip地址可以通过<code>ifconfig</code>命令查询</p>
-
-  </div>
-
+<blockquote>
+<p>[!NOTE]</p>
+<p>版本较新的CUDA一般需要较新版本的Nvidia驱动支持，从<a class="link"   target="_blank" rel="noopener" href="https://docs.nvidia.com/deeplearning/cudnn/latest/reference/support-matrix.html" >Support Matrix — NVIDIA cuDNN<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 可以查询对应关系，如果需要应该更新显卡驱动版本。</p>
+</blockquote>
 <ol start="2">
-<li>输入密码进行身份验证</li>
+<li>在检查完驱动后，进入官网下载CUDA Toolkit，这里我们选择本地安装程序（它不包含NVIDIA Linux GPU驱动程序），按照指示进行即可</li>
 </ol>
-
-  <div class="note p-4 mb-4 rounded-small info">
-    <p>如果有频繁登录某一远程主机的需求，每次敲击这么一长串命令实在繁琐，可以给命令写个别名</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo echo &quot;alias yourname=&#x27;ssh username@your_server_ip_address&#x27;&quot; &gt;&gt; ~/.bashrc &amp;&amp; source ~/.bashrc</span><br></pre></td></tr></table></figure></div>
-
-<p>这样下次就只需要输入yourname(可自定义)就可以了</p>
-
-  </div>
-
-<h3 id="第二种登录方式：公私钥登录"><a href="#第二种登录方式：公私钥登录" class="headerlink" title="第二种登录方式：公私钥登录"></a>第二种登录方式：公私钥登录</h3><ol>
-<li><p>在本地机器上生成公钥私钥对</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>将公钥复制到远程机器中,将key写到远程机器的 ~&#x2F; .ssh&#x2F;authorized_keys文件中</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id username@your_server_ip_address</span><br></pre></td></tr></table></figure></div></li>
+<p><a class="link"   target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_local" >CUDA Toolkit 12.6 Update 3 Downloads | NVIDIA Developer<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/./cuda.png"
+                      alt="cuda"
+                ></p>
+<ol start="3">
+<li>配置环境变量，写入~&#x2F;.bashrc</li>
 </ol>
-<p>​      输入密码后，后续使用<code>ssh username@your_server_ip_address</code>即可登录，无需输入密码。同样如果觉得天天输这个命令麻烦的话可以写个别名。</p>
-<h2 id="进阶应用"><a href="#进阶应用" class="headerlink" title="进阶应用"></a>进阶应用</h2><h3 id="无中断运行程序"><a href="#无中断运行程序" class="headerlink" title="无中断运行程序"></a>无中断运行程序</h3><p>Linux关闭ssh（关闭终端等）后运行的程序或者服务会自动停止，如果需要在关闭终端后依旧执行，可以使用<code>nohup</code>指令</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup python3 a.python</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PATH=/usr/local/cuda/bin:$PATH</span><br><span class="line">export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH</span><br></pre></td></tr></table></figure></div>
 
-<h3 id="跨机拷贝文件"><a href="#跨机拷贝文件" class="headerlink" title="跨机拷贝文件"></a>跨机拷贝文件</h3><p>使用<code>scp</code>命令可以在各个主机之间进行复制或者文件传输。scp是secure copy的简写，它在后台使用ssh连接来进行文件的传输。</p>
-<ul>
-<li><p>scp的基础语法如下</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp source_file_path destination_file_path</span><br></pre></td></tr></table></figure></div>
 
+
+<h2 id="Cudnn"><a href="#Cudnn" class="headerlink" title="Cudnn"></a>Cudnn</h2><ol>
+<li><p>Cudnn的版本需要和CUDA对齐：<a class="link"   target="_blank" rel="noopener" href="https://docs.nvidia.com/deeplearning/cudnn/latest/reference/support-matrix.html" >https://docs.nvidia.com/deeplearning/cudnn/latest/reference/support-matrix.html<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
 </li>
-<li><p>从本地传到远程主机（从远程传到本地只需倒过来即可）</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ~/my_local_file user@your_server_ip_address:/remote/directory</span><br></pre></td></tr></table></figure></div></li>
-</ul>
-<p></p>
+<li><p>下载tar文件：<a class="link"   target="_blank" rel="noopener" href="https://developer.download.nvidia.com/compute/cudnn/redist/cudnn/linux-x86_64/" >Index of &#x2F;compute&#x2F;cudnn&#x2F;redist&#x2F;cudnn&#x2F;linux-x86_64 (nvidia.com)<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> ，可以复制对应的链接使用<code>wget</code>命令下载</p>
+</li>
+</ol>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget URL</span><br></pre></td></tr></table></figure></div>
 
-<p></p>
+<ol start="3">
+<li>解压缩刚刚的tar文件</li>
+</ol>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf cudnn-linux-xxx</span><br></pre></td></tr></table></figure></div>
 
+<ol start="4">
+<li>复制到cuda toolkit文件夹中</li>
+</ol>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo cp cudnn-*-archive/include/cudnn*.h /usr/local/cuda/include </span><br><span class="line">sudo cp -P cudnn-*-archive/lib/libcudnn* /usr/local/cuda/lib64 </span><br><span class="line">sudo chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*</span><br></pre></td></tr></table></figure></div>
 
-  <div class="note-large blue">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <p>参考文章</p>
-
-    </div>
-    <div class="notel-content">
-      <p><a class="link"   target="_blank" rel="noopener" href="https://cn.linux-console.net/?p=23347" >Linux 中的基本 SSH 命令用法和配置 (linux-console.net)<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/voidy/p/4215891.html" >12个scp传输文件的命令栗子 - 尛鱼 - 博客园 (cnblogs.com)<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-
-    </div>
-  </div>
-
+<blockquote>
+<p>[!IMPORTANT]</p>
+<p>实际上这里的 &#x2F;usr&#x2F;local&#x2F;cuda为软链接，如果你除了刚刚的安装外没安装过其它的cuda版本，它指向了实际的 &#x2F;usr&#x2F;local&#x2F;cuda-xx.xx ，但如果你已经安装了多个版本，要注意这里应该替换在对应的CUDA版本里</p>
+</blockquote>
 
 		</div>
 
@@ -381,18 +349,18 @@
 		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
 			<div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> Ubuntu的ssh基本命令与配置</li>
+        <li><strong>标题:</strong> WSL2安装Cuda和cudnn</li>
         <li><strong>作者:</strong> chenshan</li>
         <li><strong>创建于
-                :</strong> 2024-08-23 19:06:32</li>
+                :</strong> 2024-11-30 00:38:52</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-09-10 12:12:29
+                    :</strong> 2024-11-30 18:43:53
             </li>
         
         <li>
-            <strong>链接:</strong> https://chenshan.link/2024/08/23/Ubuntu中ssh基本命令与配置/
+            <strong>链接:</strong> https://chenshan.link/2024/11/30/cuda/
         </li>
         <li>
             <strong>
@@ -418,12 +386,12 @@
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
 			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2024/09/21/Ubuntu20.04%E5%AE%89%E8%A3%85ros%20noetic/">
+				<a class="prev" rel="prev" href="/2024/11/30/CF%E6%89%98%E7%AE%A1%E5%9F%9F%E5%90%8D/">
 					<span class="left arrow-icon flex justify-center items-center">
 						<i class="fa-solid fa-chevron-left"></i>
 					</span>
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">Ubuntu20.04安装ros noetic</span>
+						<span class="post-nav-title-item">Github Page使用托管在CF上的域名</span>
 						<span class="post-nav-item">上一篇</span>
 					</span>
 				</a>
@@ -431,9 +399,9 @@
 			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2024/08/13/disk/">
+				<a class="next" rel="next" href="/2024/11/24/git/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">【硬件指南】 硬盘：协议、总线、接口</span>
+						<span class="post-nav-title-item">Git与GitHub指南</span>
 						<span class="post-nav-item">下一篇</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -497,8 +465,8 @@
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
-		<div class="page-title">Ubuntu的ssh基本命令与配置</div>
-		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH%E7%AE%80%E4%BB%8B"><span class="nav-text">SSH简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85SSH%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-text">安装SSH服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%B8%BB%E6%9C%BA"><span class="nav-text">连接到远程主机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8D%E7%99%BB%E5%BD%95%E6%96%B9%E5%BC%8F%EF%BC%9A%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95"><span class="nav-text">第一种登录方式：密码登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D%E7%99%BB%E5%BD%95%E6%96%B9%E5%BC%8F%EF%BC%9A%E5%85%AC%E7%A7%81%E9%92%A5%E7%99%BB%E5%BD%95"><span class="nav-text">第二种登录方式：公私钥登录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6%E5%BA%94%E7%94%A8"><span class="nav-text">进阶应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E4%B8%AD%E6%96%AD%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F"><span class="nav-text">无中断运行程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%A8%E6%9C%BA%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6"><span class="nav-text">跨机拷贝文件</span></a></li></ol></li></ol>
+		<div class="page-title">WSL2安装Cuda和cudnn</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CUDA-Toolkit"><span class="nav-text">CUDA Toolkit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cudnn"><span class="nav-text">Cudnn</span></a></li></ol>
 
 	</div>
 </div>
