@@ -13,24 +13,20 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/11/30/cuda/"/>
+    <link rel="canonical" href="http://example.com/tags/dns/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="主要参考了微软与NVIDIA的教程">
-<meta property="og:type" content="article">
-<meta property="og:title" content="WSL2安装Cuda和cudnn">
-<meta property="og:url" content="http://example.com/2024/11/30/cuda/index.html">
+        <meta name="description" content="记录生活与学习笔记">
+<meta property="og:type" content="website">
+<meta property="og:title" content="辰山的blog">
+<meta property="og:url" content="http://example.com/tags/DNS/index.html">
 <meta property="og:site_name" content="辰山的blog">
-<meta property="og:description" content="主要参考了微软与NVIDIA的教程">
+<meta property="og:description" content="记录生活与学习笔记">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/image/cuda/cuda.png">
-<meta property="article:published_time" content="2024-11-29T16:38:52.361Z">
-<meta property="article:modified_time" content="2024-11-30T10:49:49.677Z">
 <meta property="article:author" content="chenshan">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/image/cuda/cuda.png">
     
     
     <!--- Icon Part-->
@@ -42,7 +38,7 @@
     
     <title>
         
-            WSL2安装Cuda和cudnn | Chenshan&#39;s Blog
+            标签: DNS | Chenshan&#39;s Blog
         
     </title>
 
@@ -233,246 +229,58 @@
 			
 
 			<div class="main-content">
-				<div class="post-page-container flex relative justify-between box-border w-full h-full">
-	<div class="article-content-container">
-
-		<div class="article-title relative w-full">
-			
-			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">WSL2安装Cuda和cudnn</h1>
-			</div>
-			
-		</div>
-
-		
-		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
-			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/images/chenshan-avatar.svg">
-			</div>
-			<div class="info flex flex-col justify-between">
-				<div class="author flex items-center">
-					<span class="name text-default-text-color text-lg font-semibold">chenshan</span>
-					
-					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv1</span>
-					
-				</div>
-				<div class="meta-info">
-					<div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-11-30 00:38:52</span>
-        <span class="mobile">2024-11-30 00:38:52</span>
-        <span class="hover-info">创建</span>
-    </span>
-    
-        <span class="article-date article-meta-item">
-            <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-11-30 18:49:49</span>
-            <span class="mobile">2024-11-30 18:49:49</span>
-            <span class="hover-info">更新</span>
-        </span>
-    
-
-    
-    
-
-    
-    
-    
-    
-        <span class="article-pv article-meta-item">
-            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-        </span>
-    
-</div>
-
-				</div>
-			</div>
-		</div>
-		
-
-		
-
-
-		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<h2 id="CUDA-Toolkit"><a href="#CUDA-Toolkit" class="headerlink" title="CUDA Toolkit"></a>CUDA Toolkit</h2><p>这里主要参考了官方教程：<a class="link"   target="_blank" rel="noopener" href="https://docs.nvidia.com/cuda/wsl-user-guide/index.html#notices" >CUDA on WSL (nvidia.com)<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-<ol>
-<li>由于Windows的<a class="link"   target="_blank" rel="noopener" href="https://www.nvidia.com/en-us/drivers/" >Nvidia Driver<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>提供了对WSL的支持，所以我们不需要像双系统那样重新在Ubuntu上安装Nvidia驱动，只需要安装CUDA Toolkit即可。实际上需要的CUDA版本与你的pytorch有关。</li>
-</ol>
-<blockquote>
-<p>[!NOTE]</p>
-<p>版本较新的CUDA一般需要较新版本的Nvidia驱动支持，从<a class="link"   target="_blank" rel="noopener" href="https://docs.nvidia.com/deeplearning/cudnn/latest/reference/support-matrix.html" >Support Matrix — NVIDIA cuDNN<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 可以查询对应关系，如果需要应该更新显卡驱动版本。</p>
-</blockquote>
-<ol start="2">
-<li>在检查完驱动后，进入官网下载CUDA Toolkit，这里我们选择本地安装程序（它不包含NVIDIA Linux GPU驱动程序），按照指示进行即可</li>
-</ol>
-<p><a class="link"   target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_local" >CUDA Toolkit 12.6 Update 3 Downloads | NVIDIA Developer<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/image/cuda/cuda.png"
-                      alt="cuda"
-                ></p>
-<ol start="3">
-<li>配置环境变量，写入~&#x2F;.bashrc</li>
-</ol>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PATH=/usr/local/cuda/bin:$PATH</span><br><span class="line">export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH</span><br></pre></td></tr></table></figure></div>
-
-
-
-<h2 id="Cudnn"><a href="#Cudnn" class="headerlink" title="Cudnn"></a>Cudnn</h2><ol>
-<li><p>Cudnn的版本需要和CUDA对齐：<a class="link"   target="_blank" rel="noopener" href="https://docs.nvidia.com/deeplearning/cudnn/latest/reference/support-matrix.html" >https://docs.nvidia.com/deeplearning/cudnn/latest/reference/support-matrix.html<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-</li>
-<li><p>下载tar文件：<a class="link"   target="_blank" rel="noopener" href="https://developer.download.nvidia.com/compute/cudnn/redist/cudnn/linux-x86_64/" >Index of &#x2F;compute&#x2F;cudnn&#x2F;redist&#x2F;cudnn&#x2F;linux-x86_64 (nvidia.com)<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> ，可以复制对应的链接使用<code>wget</code>命令下载</p>
-</li>
-</ol>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget URL</span><br></pre></td></tr></table></figure></div>
-
-<ol start="3">
-<li>解压缩刚刚的tar文件</li>
-</ol>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf cudnn-linux-xxx</span><br></pre></td></tr></table></figure></div>
-
-<ol start="4">
-<li>复制到cuda toolkit文件夹中</li>
-</ol>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo cp cudnn-*-archive/include/cudnn*.h /usr/local/cuda/include </span><br><span class="line">sudo cp -P cudnn-*-archive/lib/libcudnn* /usr/local/cuda/lib64 </span><br><span class="line">sudo chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*</span><br></pre></td></tr></table></figure></div>
-
-<blockquote>
-<p>[!IMPORTANT]</p>
-<p>实际上这里的 &#x2F;usr&#x2F;local&#x2F;cuda为软链接，如果你除了刚刚的安装外没安装过其它的cuda版本，它指向了实际的 &#x2F;usr&#x2F;local&#x2F;cuda-xx.xx ，但如果你已经安装了多个版本，要注意这里应该替换在对应的CUDA版本里</p>
-</blockquote>
-
-		</div>
-
-		
-		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
-			<div class="article-copyright-info-container">
-    <ul>
-        <li><strong>标题:</strong> WSL2安装Cuda和cudnn</li>
-        <li><strong>作者:</strong> chenshan</li>
-        <li><strong>创建于
-                :</strong> 2024-11-30 00:38:52</li>
-        
-            <li>
-                <strong>更新于
-                    :</strong> 2024-11-30 18:49:49
-            </li>
-        
-        <li>
-            <strong>链接:</strong> https://chenshan.link/2024/11/30/cuda/
-        </li>
-        <li>
-            <strong>
-                版权声明:
-            </strong>
-            
-
-            
-                版权所有 &#169 chenshan，禁止转载。
-            
-        </li>
-    </ul>
-</div>
-
-		</div>
-		
-
-		
-
-		
-
-		
-		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
-			
-			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2024/11/30/CF%E6%89%98%E7%AE%A1%E5%9F%9F%E5%90%8D/">
-					<span class="left arrow-icon flex justify-center items-center">
-						<i class="fa-solid fa-chevron-left"></i>
-					</span>
-					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">Github Page使用托管在CF上的域名</span>
-						<span class="post-nav-item">上一篇</span>
-					</span>
-				</a>
-			</div>
-			
-			
-			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2024/11/24/git/">
-					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">Git与GitHub指南</span>
-						<span class="post-nav-item">下一篇</span>
-					</span>
-					<span class="right arrow-icon flex justify-center items-center">
-						<i class="fa-solid fa-chevron-right"></i>
-					</span>
-				</a>
-			</div>
-			
-		</div>
-		
-
-
-		
-		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
-			<div class="comments-container mt-10 w-full ">
-    <div id="comment-anchor" class="w-full h-2.5"></div>
-    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
-        评论
-    </div>
-    
-
-        
-            
-    <div id="waline"></div>
-    <script type="module" data-swup-reload-script>
-      import { init } from '/js/libs/waline.mjs';
-
-      function loadWaline() {
-        init({
-          el: '#waline',
-          serverURL: 'https://comment.chenshan.link/',
-          lang: 'zh-CN',
-          dark: 'body[class~="dark-mode"]',
-          reaction: false,
-          requiredMeta: ['nick', 'mail'],
-          emoji: [],
-          
-          
-        });
-      }
-
-      if (typeof swup !== 'undefined') {
-        loadWaline();
-      } else {
-        window.addEventListener('DOMContentLoaded', loadWaline);
-      }
-    </script>
-
-
-
-        
-    
-</div>
-
-		</div>
-		
-	</div>
+				<div class="page-template-container">
+	
 
 	
-	<div class="toc-content-container">
-		<div class="post-toc-wrap">
-	<div class="post-toc">
-		<div class="toc-title">目录</div>
-		<div class="page-title">WSL2安装Cuda和cudnn</div>
-		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CUDA-Toolkit"><span class="nav-text">CUDA Toolkit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cudnn"><span class="nav-text">Cudnn</span></a></li></ol>
-
-	</div>
+	<div class="tag-name">
+    <i class="fa-solid fa-tag"></i>&nbsp;DNS
 </div>
-	</div>
+<div class="tag-post-list">
+    
+<div class="archive-list-container">
+    
+        <section class="archive-item mb-spacing-unit last:mb-0">
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2">2024</span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">1</span>
+            </div>
+            
+            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                
+                    
+                    
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='11-30'>
+                    
+                    <a href="/2024/11/30/CF%E6%89%98%E7%AE%A1%E5%9F%9F%E5%90%8D/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Github Page使用托管在CF上的域名</span>
+                    </a>
+                    
+                
+                </li> <!-- Ensure the last item is properly closed -->
+            </ul>
+        </section>
+    
+</div>
+</div>
 	
+
+	<div class="page-template-content markdown-body">
+		
+
+		
+	</div>
+
+	<div class="page-template-comments">
+		
+	</div>
 </div>
+
+<div class="paginator">
+	<span class="page-number current">1</span>
+</div>
+  
 			</div>
 
 			
@@ -550,26 +358,6 @@
 		</div>
 	</div>
 
-	
-	<div class="post-tools">
-		<div class="post-tools-container">
-	<ul class="article-tools-list">
-		<!-- TOC aside toggle -->
-		
-		<li class="right-bottom-tools page-aside-toggle">
-			<i class="fa-regular fa-outdent"></i>
-		</li>
-		
-
-		<!-- go comment -->
-		
-		<li class="go-comment">
-			<i class="fa-regular fa-comments"></i>
-		</li>
-		
-	</ul>
-</div>
-	</div>
 	
 
 	<div class="right-side-tools-container">
@@ -652,7 +440,6 @@
         containers: ["#swup"],
     });
 </script>
-
 
 
 
