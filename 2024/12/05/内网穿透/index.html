@@ -13,25 +13,25 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/08/13/disk/"/>
+    <link rel="canonical" href="http://example.com/2024/12/05/内网穿透/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="关于硬盘的一点科普">
+        <meta name="description" content="WSL使用内网穿透服务">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【硬件指南】 硬盘：协议、总线、接口">
-<meta property="og:url" content="http://example.com/2024/08/13/disk/index.html">
+<meta property="og:title" content="内网穿透">
+<meta property="og:url" content="http://example.com/2024/12/05/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/index.html">
 <meta property="og:site_name" content="辰山的blog">
-<meta property="og:description" content="关于硬盘的一点科普">
+<meta property="og:description" content="WSL使用内网穿透服务">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/%E7%A1%AC%E4%BB%B6%E6%8C%87%E5%8D%97/Snipaste_2024-08-13_22-44-51.png">
-<meta property="og:image" content="http://example.com/images/%E7%A1%AC%E4%BB%B6%E6%8C%87%E5%8D%97/Snipaste_2024-08-13_23-03-35.png">
-<meta property="article:published_time" content="2024-08-13T04:14:59.914Z">
-<meta property="article:modified_time" content="2024-09-21T14:29:33.546Z">
+<meta property="og:image" content="http://example.com/image/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/token.png">
+<meta property="og:image" content="http://example.com/image/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/ui.png">
+<meta property="article:published_time" content="2024-12-05T13:53:01.000Z">
+<meta property="article:modified_time" content="2024-12-05T13:53:42.533Z">
 <meta property="article:author" content="chenshan">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/%E7%A1%AC%E4%BB%B6%E6%8C%87%E5%8D%97/Snipaste_2024-08-13_22-44-51.png">
+<meta name="twitter:image" content="http://example.com/image/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/token.png">
     
     
     <!--- Icon Part-->
@@ -43,7 +43,7 @@
     
     <title>
         
-            【硬件指南】 硬盘：协议、总线、接口 | Chenshan&#39;s Blog
+            内网穿透 | Chenshan&#39;s Blog
         
     </title>
 
@@ -240,7 +240,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">【硬件指南】 硬盘：协议、总线、接口</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">内网穿透</h1>
 			</div>
 			
 		</div>
@@ -261,15 +261,15 @@
 					<div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-08-13 12:14:59</span>
-        <span class="mobile">2024-08-13 12:14:59</span>
+        <span class="desktop">2024-12-05 21:53:01</span>
+        <span class="mobile">2024-12-05 21:53:01</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-09-21 22:29:33</span>
-            <span class="mobile">2024-09-21 22:29:33</span>
+            <span class="desktop">2024-12-05 21:53:42</span>
+            <span class="mobile">2024-12-05 21:53:42</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -296,34 +296,216 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p>​	</p>
+			<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>需要从学校提供的不具名服务器上往WSL传点文件，无奈之前只在局域网内部使用过scp，于是捡起计网知识研究了一番。</p>
+<h2 id="公网IP-私网IP"><a href="#公网IP-私网IP" class="headerlink" title="公网IP &#x2F; 私网IP"></a>公网IP &#x2F; 私网IP</h2><h3 id="1-公网（Public-Network）"><a href="#1-公网（Public-Network）" class="headerlink" title="1. 公网（Public Network）"></a><strong>1. 公网（Public Network）</strong></h3><ul>
+<li><p><strong>定义</strong>：公网是对外开放的网络，全球用户都可以通过互联网访问。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ol>
+<li><strong>全球唯一IP地址</strong>：公网使用的IP地址由互联网分配机构（如ICANN）分配，每个IP地址在全球范围内都是唯一的。</li>
+<li><strong>广泛访问</strong>：用户可以通过公网访问各种服务和资源，如网站、电子邮件、在线视频等。</li>
+</ol>
+</li>
+<li><p><strong>举例</strong>：</p>
+<ul>
+<li>访问<a href="http://www.google.com、[www.baidu.com](http://www.baidu.com。)">www.google.com、[www.baidu.com](http://www.baidu.com。)</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="2-内网（Private-Network）"><a href="#2-内网（Private-Network）" class="headerlink" title="2. 内网（Private Network）"></a><strong>2. 内网（Private Network）</strong></h3><ul>
+<li><strong>定义</strong>：内网是企业、学校或家庭等私有网络环境中使用的网络，通常用于内部通信和资源共享，外部无法直接访问。</li>
+<li><strong>特点</strong>：<ol>
+<li>私有IP地址：共保留三段私有IP地址段供内网使用<ul>
+<li>10.0.0.0 - 10.255.255.255</li>
+<li>172.16.0.0 - 172.31.255.255</li>
+<li>192.168.0.0 - 192.168.255.255</li>
+</ul>
+</li>
+<li><strong>不直接暴露于公网</strong>：通过路由器或防火墙与公网隔离，保障安全性。</li>
+<li><strong>安全性较高</strong>：由于内网资源无法直接被外部访问，攻击风险相对较低。</li>
+</ol>
+</li>
+<li><strong>用途</strong>：<ul>
+<li>企业内部办公。</li>
+<li>家庭网络设备连接（如路由器、智能家居）。</li>
+<li>学校或局域网的资源共享。</li>
+</ul>
+</li>
+<li><strong>举例</strong>：<ul>
+<li>企业内部文件服务器。</li>
+<li>家庭中的Wi-Fi网络。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>[!NOTE]</p>
+<p>使用 <code>ifconfig/ipconfig</code> 查看的为局域网(内网) ip地址, <code>wlan0/以太网适配器</code>等代表不同的网卡分配的ip地址。如WSL在WINDOWS中可以看到 <code>以太网适配器 vEthernet (WSL (Hyper-V firewall)</code>， 其ip地址与在WSL ubuntu中使用 <code>ifconfig</code> 查看到的ip地址一致。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>公网</th>
+<th>内网</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>IP地址范围</strong></td>
+<td>全球唯一的公网IP</td>
+<td>私有IP，不可在公网使用</td>
+</tr>
+<tr>
+<td><strong>访问范围</strong></td>
+<td>任何人都可以访问</td>
+<td>仅限内部用户访问</td>
+</tr>
+<tr>
+<td><strong>安全性</strong></td>
+<td>风险较高，需加强防护</td>
+<td>较安全，外部无法直接访问</td>
+</tr>
+<tr>
+<td><strong>用途</strong></td>
+<td>提供互联网服务</td>
+<td>内部资源共享、局域网通信</td>
+</tr>
+<tr>
+<td><strong>连接方式</strong></td>
+<td>直接连接到互联网</td>
+<td>通过路由器或NAT连接到公网</td>
+</tr>
+</tbody></table>
+<h2 id="公网与内网的互通"><a href="#公网与内网的互通" class="headerlink" title="公网与内网的互通"></a>公网与内网的互通</h2><h4 id="1-内网设备访问公网"><a href="#1-内网设备访问公网" class="headerlink" title="1. 内网设备访问公网"></a><strong>1. 内网设备访问公网</strong></h4><p>内网中的设备由于使用私有 IP 地址，无法直接连接到公网。为了实现访问公网的需求，需要借助以下技术：</p>
+<h5 id="1-1-NAT（网络地址转换）"><a href="#1-1-NAT（网络地址转换）" class="headerlink" title="1.1 NAT（网络地址转换）"></a><strong>1.1 NAT（网络地址转换）</strong></h5><ul>
+<li><strong>定义</strong>：NAT 是一种将内网的私有 IP 地址转换为公网 IP 地址的技术。路由器或网关设备使用 NAT，使得多个内网设备共享一个或多个公网 IP。</li>
+<li><strong>工作原理</strong>：<ol>
+<li>内网设备发送请求时，NAT 将设备的私有 IP 替换为路由器的公网 IP，并记录设备的会话信息。</li>
+<li>公网服务器响应时，路由器通过记录的会话信息，将数据包返回到对应的内网设备。</li>
+</ol>
+</li>
+<li><strong>优点</strong>：<ul>
+<li>节省公网 IP 地址。</li>
+<li>增强安全性：内网设备的私有 IP 不暴露在公网。</li>
+</ul>
+</li>
+<li><strong>常见场景</strong>：<ul>
+<li>家庭网络中，所有设备通过路由器访问互联网。</li>
+<li>企业局域网通过一个出口访问公网。</li>
+</ul>
+</li>
+</ul>
+<h5 id="1-2-代理服务器"><a href="#1-2-代理服务器" class="headerlink" title="1.2 代理服务器"></a><strong>1.2 代理服务器</strong></h5><ul>
+<li><strong>定义</strong>：代理服务器是一种中间服务器，内网设备的请求先发送到代理服务器，由代理服务器代替设备与公网通信。</li>
+<li><strong>工作原理</strong>：<ol>
+<li>接受内网设备的请求。</li>
+<li>将请求转发给公网服务器。</li>
+<li>获取公网服务器的响应后，再将结果返回给内网设备。</li>
+</ol>
+</li>
+<li><strong>用途</strong>：<ul>
+<li>缓存常用资源，提升访问速度。</li>
+<li>管控和监控网络流量。</li>
+<li>提供匿名访问功能，隐藏内网设备的真实 IP。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="2-公网设备访问内网资源"><a href="#2-公网设备访问内网资源" class="headerlink" title="2. 公网设备访问内网资源"></a><strong>2. 公网设备访问内网资源</strong></h4><p>由于内网 IP 地址不可直接被公网访问，因此需要特殊的方法让公网设备访问到内网的资源。</p>
+<h5 id="2-1-VPN（虚拟专用网络）"><a href="#2-1-VPN（虚拟专用网络）" class="headerlink" title="2.1 VPN（虚拟专用网络）"></a><strong>2.1 VPN（虚拟专用网络）</strong></h5><ul>
+<li><strong>定义</strong>：VPN 是一种加密的网络隧道技术，允许远程用户通过安全通道访问内网资源。</li>
+<li><strong>工作原理</strong>：<ol>
+<li>公网设备通过 VPN 客户端连接到内网的 VPN 服务器。</li>
+<li>建立加密隧道后，公网设备会被分配一个内网 IP 地址。</li>
+<li>公网设备就像直接连接到了内网，能够访问内网的资源。</li>
+</ol>
+</li>
+<li><strong>优点</strong>：<ul>
+<li>安全性高，数据经过加密。</li>
+<li>可远程访问内网资源，如文件服务器、数据库等。</li>
+</ul>
+</li>
+<li><strong>常见场景</strong>：<ul>
+<li>远程办公，访问公司内部资源。</li>
+<li>访问被防火墙或地理限制阻止的服务。</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-2-端口映射（NAT-穿透）"><a href="#2-2-端口映射（NAT-穿透）" class="headerlink" title="2.2 端口映射（NAT 穿透）"></a><strong>2.2 端口映射（NAT 穿透）</strong></h5><ul>
+<li><p><strong>定义</strong>：端口映射是一种将内网资源通过路由器的公网 IP 和特定端口暴露给公网的技术。</p>
+</li>
+<li><p><strong>工作原理</strong>：</p>
+<ol>
+<li>在路由器上配置端口映射规则。</li>
+<li>当公网设备访问路由器的公网 IP 和指定端口时，路由器将请求转发到对应的内网设备。</li>
+</ol>
+<ul>
+<li>例如：<ul>
+<li>路由器公网 IP：<code>203.0.113.1</code></li>
+<li>内网服务器 IP：<code>192.168.1.100</code></li>
+<li>映射规则：将 <code>203.0.113.1:8080</code> 映射到 <code>192.168.1.100:80</code></li>
+</ul>
+</li>
+</ul>
+<p>公网用户访问 <code>203.0.113.1:8080</code>，实际上访问的是内网服务器的 <code>80</code> 端口。</p>
+</li>
+<li><p><strong>优点</strong>：</p>
+<ul>
+<li>简单易用。</li>
+<li>只需要配置路由器即可实现公网与内网的通信。</li>
+</ul>
+</li>
+<li><p><strong>限制</strong>：</p>
+<ul>
+<li>对端口映射数量有限制。</li>
+<li>内网设备需要手动开放相关端口，增加了安全风险。</li>
+</ul>
+</li>
+</ul>
+<h2 id="使用cpolar实现内网穿透"><a href="#使用cpolar实现内网穿透" class="headerlink" title="使用cpolar实现内网穿透"></a>使用cpolar实现内网穿透</h2><blockquote>
+<p> cpolar官网：<a class="link"   href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://www.cpolar.com/&objectId=2245131&objectType=1" >https://www.cpolar.com/<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> </p>
+</blockquote>
+<h5 id="1-安装cpolar"><a href="#1-安装cpolar" class="headerlink" title="1. 安装cpolar"></a>1. 安装cpolar</h5><div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L <span class="attr">https</span>:<span class="comment">//www.cpolar.com/static/downloads/install-release-cpolar.sh | sudo bash</span></span><br></pre></td></tr></table></figure></div>
 
-  <div class="note p-4 mb-4 rounded-small primary">
-    <p>本文参考了<a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Qv411t7ZL/?share_source=copy_web&vd_source=00716f2a2210da509f138536b783795c" >【硬核科普】硬盘的SATA M.2 NGFF NVME是什么意思，详解硬盘的总线协议与接口<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>，仅作学习分享，如有侵权立删。</p>
-
-  </div>	
-
-
-
-<p>作为存储数据的硬件设备，硬盘的性能优劣直接影响了数据处理的效率。除了磁盘转速&#x2F;存储颗粒等自身的影响，协议、连接的总线类型以及外部接口也通常是我们选购一块性能合适的硬盘的重要度量因素。这三个概念很容易让电脑小白晕乎乎的混淆，因此有必要作一个简要的科普指南。</p>
-<div class="tabs" id="tab-first-unique-name"><ul class="nav-tabs"><li class="tab active"><a class="#first-unique-name-1">总线</a></li><li class="tab"><a class="#first-unique-name-2">协议</a></li><li class="tab"><a class="#first-unique-name-3">接口</a></li></ul><div class="tab-content"><div class="tab-pane active" id="first-unique-name-1"><p>总线（Bus）是连接计算机各个部件，包括处理器、内存和外部设备如硬盘等，以便数据传输的通道。例如CPU和内存、CPU和硬盘间需要进行数据交互，这时就需要通过总线连接作为传输媒介。</p>
+<h5 id="2-token认证"><a href="#2-token认证" class="headerlink" title="2. token认证"></a>2. token认证</h5><p>注册cpolar账号，进入<code>验证</code>查看<code>Authtoken</code></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/%E7%A1%AC%E4%BB%B6%E6%8C%87%E5%8D%97/Snipaste_2024-08-13_22-44-51.png"
+                     data-src="/./image/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/token.png"
                      
-                ></p></div><div class="tab-pane" id="first-unique-name-2"><p>协议（protocal）定义了硬盘与计算机其他部分之间的通信方式。这些协议不仅规定了如何发送和接收数据，还决定了数据的处理方式、错误检查和系统与驱动器之间的互操作性，不同的硬盘协议支持不同的数据传输速度和功能。</p>
+                ></p>
+<p>在WSL中输入：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cpolar authtoken xxxxxx(复制的token)</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="3-启动cpolar服务"><a href="#3-启动cpolar服务" class="headerlink" title="3. 启动cpolar服务"></a>3. 启动cpolar服务</h5><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start cpolar</span><br></pre></td></tr></table></figure></div>
+
+<p>查看状态是否为<code>active</code></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status cpolar</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="4-查看分配公网IP"><a href="#4-查看分配公网IP" class="headerlink" title="4. 查看分配公网IP"></a>4. 查看分配公网IP</h5><p>这一步需要用到浏览器，WSL上安装可参考<a class="link"   target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/wsl/tutorials/gui-apps" >使用 WSL 运行 Linux GUI 应用 | Microsoft Learn<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 。在浏览器上访问本地9200端口, 访问方式: <code>局域网ip:9200</code>，打开cpolar web ui界面, 默认会生成一个ssh名称的隧道, 可以直接跳到状态 - 在线隧道列表查看, 然后记住映射的公网ip和端口号，远程连接。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/%E7%A1%AC%E4%BB%B6%E6%8C%87%E5%8D%97/Snipaste_2024-08-13_23-03-35.png"
+                     data-src="/./image/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/ui.png"
                      
-                ></p></div><div class="tab-pane" id="first-unique-name-3"></div></div></div>
+                ></p>
+<p>这里使用的端口已经不是默认端口22，所以应该使用 -P 参数指定</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P XXX file username@host:dir</span><br></pre></td></tr></table></figure></div>
 
+<blockquote>
+<p>[!CAUTION]</p>
+<p>这里我使用WSL时遇到了两个问题，一个是ssh默认的配置里禁止了密码登录方式，需要修改 <code>/etc/ssh/sshd_config</code>，将<code>PasswordAuthentication no</code> 改为 <code>PasswordAuthentication yes</code> </p>
+</blockquote>
 
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p>参考文章</p>
 
+    </div>
+    <div class="notel-content">
+      <p><a class="link"   target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2292329" >无需公网IP，在家SSH远程连接公司内网服务器「cpolar内网穿透」-腾讯云开发者社区-腾讯云 (tencent.com)<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
 
-
+    </div>
+  </div>
 
 		</div>
 
@@ -331,18 +513,18 @@
 		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
 			<div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> 【硬件指南】 硬盘：协议、总线、接口</li>
+        <li><strong>标题:</strong> 内网穿透</li>
         <li><strong>作者:</strong> chenshan</li>
         <li><strong>创建于
-                :</strong> 2024-08-13 12:14:59</li>
+                :</strong> 2024-12-05 21:53:01</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-09-21 22:29:33
+                    :</strong> 2024-12-05 21:53:42
             </li>
         
         <li>
-            <strong>链接:</strong> https://chenshan.link/2024/08/13/disk/
+            <strong>链接:</strong> https://chenshan.link/2024/12/05/内网穿透/
         </li>
         <li>
             <strong>
@@ -367,18 +549,18 @@
 		
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
-			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2024/08/23/Ubuntu%E4%B8%ADssh%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E4%B8%8E%E9%85%8D%E7%BD%AE/">
-					<span class="left arrow-icon flex justify-center items-center">
-						<i class="fa-solid fa-chevron-left"></i>
-					</span>
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2024/11/30/CF%E6%89%98%E7%AE%A1%E5%9F%9F%E5%90%8D/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">Ubuntu的ssh基本命令与配置</span>
-						<span class="post-nav-item">上一篇</span>
+						<span class="post-nav-title-item">Github Page使用托管在CF上的域名</span>
+						<span class="post-nav-item">下一篇</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
 					</span>
 				</a>
 			</div>
-			
 			
 		</div>
 		
@@ -435,8 +617,8 @@
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
-		<div class="page-title">【硬件指南】 硬盘：协议、总线、接口</div>
-		
+		<div class="page-title">内网穿透</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AC%E7%BD%91IP-%E7%A7%81%E7%BD%91IP"><span class="nav-text">公网IP &#x2F; 私网IP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%85%AC%E7%BD%91%EF%BC%88Public-Network%EF%BC%89"><span class="nav-text">1. 公网（Public Network）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%86%85%E7%BD%91%EF%BC%88Private-Network%EF%BC%89"><span class="nav-text">2. 内网（Private Network）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AC%E7%BD%91%E4%B8%8E%E5%86%85%E7%BD%91%E7%9A%84%E4%BA%92%E9%80%9A"><span class="nav-text">公网与内网的互通</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8cpolar%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F"><span class="nav-text">使用cpolar实现内网穿透</span></a></li></ol>
 
 	</div>
 </div>
