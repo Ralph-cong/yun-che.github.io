@@ -11,6 +11,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     
+        
+        
+        
+            <link rel="preconnect" href="https://registry.npmmirror.com" crossorigin>
+        
+    
     <!--- Seo Part-->
     
     <link rel="canonical" href="http://example.com/2024/12/05/内网穿透/"/>
@@ -25,13 +31,13 @@
 <meta property="og:site_name" content="辰山的blog">
 <meta property="og:description" content="WSL使用内网穿透服务">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/image/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/token.png">
-<meta property="og:image" content="http://example.com/image/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/ui.png">
+<meta property="og:image" content="http://example.com/images/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/token.png">
+<meta property="og:image" content="http://example.com/images/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/ui.png">
 <meta property="article:published_time" content="2024-12-05T13:53:01.000Z">
-<meta property="article:modified_time" content="2024-12-05T13:53:42.533Z">
+<meta property="article:modified_time" content="2024-12-05T16:00:55.526Z">
 <meta property="article:author" content="chenshan">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/image/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/token.png">
+<meta name="twitter:image" content="http://example.com/images/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/token.png">
     
     
     <!--- Icon Part-->
@@ -47,9 +53,7 @@
         
     </title>
 
-    
-<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
-
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/fonts/Chillax/chillax.css">
 
     <!--- Inject Part-->
     
@@ -59,17 +63,11 @@
 
 
     
-        
-<link rel="stylesheet" href="/build/css/tailwind.css">
-
+        <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/css/tailwind.css">
     
 
-    
-<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
-
-    
-<link rel="stylesheet" href="/fonts/Geist/geist.css">
-
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/fonts/GeistMono/geist-mono.css">
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/fonts/Geist/geist.css">
     <!--- Font Part-->
     
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
@@ -92,18 +90,10 @@
   </script>
     
     <!--- Fontawesome Part-->
-    
-<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
-
-    
-<link rel="stylesheet" href="/fontawesome/brands.min.css">
-
-    
-<link rel="stylesheet" href="/fontawesome/solid.min.css">
-
-    
-<link rel="stylesheet" href="/fontawesome/regular.min.css">
-
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/fontawesome/fontawesome.min.css">
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/fontawesome/brands.min.css">
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/fontawesome/solid.min.css">
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/fontawesome/regular.min.css">
     
     
     
@@ -268,8 +258,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-12-05 21:53:42</span>
-            <span class="mobile">2024-12-05 21:53:42</span>
+            <span class="desktop">2024-12-06 00:55</span>
+            <span class="mobile">2024-12-06 00:55</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -337,10 +327,12 @@
 </ul>
 </li>
 </ul>
-<blockquote>
-<p>[!NOTE]</p>
-<p>使用 <code>ifconfig/ipconfig</code> 查看的为局域网(内网) ip地址, <code>wlan0/以太网适配器</code>等代表不同的网卡分配的ip地址。如WSL在WINDOWS中可以看到 <code>以太网适配器 vEthernet (WSL (Hyper-V firewall)</code>， 其ip地址与在WSL ubuntu中使用 <code>ifconfig</code> 查看到的ip地址一致。</p>
-</blockquote>
+
+  <div class="note p-4 mb-4 rounded-small info">
+    <p>使用 <code>ifconfig/ipconfig</code> 查看的为局域网(内网) ip地址, <code>wlan0/以太网适配器</code>等代表不同的网卡分配的ip地址。如WSL在WINDOWS中可以看到 <code>以太网适配器 vEthernet (WSL (Hyper-V firewall)</code>， 其ip地址与在WSL ubuntu中使用 <code>ifconfig</code> 查看到的ip地址一致。</p>
+
+  </div>
+
 <table>
 <thead>
 <tr>
@@ -470,7 +462,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/./image/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/token.png"
+                     data-src="/images/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/token.png"
                      
                 ></p>
 <p>在WSL中输入：</p>
@@ -485,16 +477,19 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/./image/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/ui.png"
+                     data-src="/images/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/ui.png"
                      
                 ></p>
 <p>这里使用的端口已经不是默认端口22，所以应该使用 -P 参数指定</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P XXX file username@host:dir</span><br></pre></td></tr></table></figure></div>
 
-<blockquote>
-<p>[!CAUTION]</p>
-<p>这里我使用WSL时遇到了两个问题，一个是ssh默认的配置里禁止了密码登录方式，需要修改 <code>/etc/ssh/sshd_config</code>，将<code>PasswordAuthentication no</code> 改为 <code>PasswordAuthentication yes</code> </p>
-</blockquote>
+
+  <div class="note p-4 mb-4 rounded-small red">
+    <p>这里我使用WSL时遇到了一个问题，一个是ssh默认的配置里禁止了密码登录方式，需要修改 <code>/etc/ssh/sshd_config</code>，将<code>PasswordAuthentication no</code> 改为 <code>PasswordAuthentication yes</code> </p>
+
+  </div>
+
+
 
   <div class="note-large blue">
     <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
@@ -506,6 +501,7 @@
 
     </div>
   </div>
+
 
 		</div>
 
@@ -520,7 +516,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-12-05 21:53:42
+                    :</strong> 2024-12-06 00:00:55
             </li>
         
         <li>
@@ -773,19 +769,7 @@
 </main>
 
 
-
-<script src="/build/js/libs/Swup.min.js"></script>
-
-<script src="/build/js/libs/SwupSlideTheme.min.js"></script>
-
-<script src="/build/js/libs/SwupScriptsPlugin.min.js"></script>
-
-<script src="/build/js/libs/SwupProgressPlugin.min.js"></script>
-
-<script src="/build/js/libs/SwupScrollPlugin.min.js"></script>
-
-<script src="/build/js/libs/SwupPreloadPlugin.min.js"></script>
-
+<script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/libs/Swup.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/libs/SwupSlideTheme.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/libs/SwupScriptsPlugin.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/libs/SwupProgressPlugin.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/libs/SwupScrollPlugin.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/libs/SwupPreloadPlugin.min.js" ></script>
 <script>
     const swup = new Swup({
         plugins: [
@@ -808,54 +792,27 @@
 
 
 
-	
-<script src="/build/js/tools/imageViewer.js" type="module"></script>
-
-<script src="/build/js/utils.js" type="module"></script>
-
-<script src="/build/js/main.js" type="module"></script>
-
-<script src="/build/js/layouts/navbarShrink.js" type="module"></script>
-
-<script src="/build/js/tools/scrollTopBottom.js" type="module"></script>
-
-<script src="/build/js/tools/lightDarkSwitch.js" type="module"></script>
-
-<script src="/build/js/layouts/categoryList.js" type="module"></script>
+	<script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/tools/imageViewer.js" ></script><script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/utils.js" ></script><script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/main.js" ></script><script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/layouts/navbarShrink.js" ></script><script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/tools/scrollTopBottom.js" ></script><script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/tools/lightDarkSwitch.js" ></script><script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/layouts/categoryList.js" ></script>
 
 
 
 
-
-    
-<script src="/build/js/tools/codeBlock.js" type="module"></script>
+    <script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/tools/codeBlock.js" ></script>
 
 
 
-
-    
-<script src="/build/js/layouts/lazyload.js" type="module"></script>
+    <script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/layouts/lazyload.js" ></script>
 
 
 
-
-    
-<script src="/build/js/tools/runtime.js"></script>
-
-    
-<script src="/build/js/libs/odometer.min.js"></script>
-
-    
-<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+    <script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/tools/runtime.js" ></script>
+    <script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/libs/odometer.min.js" ></script>
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/assets/odometer-theme-minimal.css">
 
 
 
-
-  
-<script src="/build/js/libs/Typed.min.js"></script>
-
-  
-<script src="/build/js/plugins/typed.js" type="module"></script>
+  <script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/libs/Typed.min.js" ></script>
+  <script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/plugins/typed.js" ></script>
 
 
 
@@ -863,29 +820,16 @@
 
 
 
-
-    
-<script src="/build/js/libs/anime.min.js"></script>
+    <script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/libs/anime.min.js" ></script>
 
 
 
 
-
-    
-<script src="/build/js/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
-
-<script src="/build/js/layouts/toc.js" type="module" data-swup-reload-script=""></script>
-
-<script src="/build/js/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+    <script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/tools/tocToggle.js" data-swup-reload-script></script><script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/layouts/toc.js" data-swup-reload-script></script><script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/plugins/tabs.js" data-swup-reload-script></script>
 
 
-
-
-<script src="/build/js/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
-
-
-<script src="/build/js/layouts/essays.js" type="module" data-swup-reload-script=""></script>
-
+<script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/libs/moment-with-locales.min.js" data-swup-reload-script></script>
+<script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.1/files/source/build/js/layouts/essays.js" data-swup-reload-script></script>
 
 
 
